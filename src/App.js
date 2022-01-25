@@ -1,23 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
+import Deck from './Containers/Deck/Deck';
 
 function App() {
+  const deck = ["Carta 1", "Carta 2", "Carta 3", "Carta 4", "Carta 5", "Carta 6", "Carta 7" ];
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Deck deck={deck} />
     </div>
   );
 }
