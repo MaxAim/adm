@@ -2,27 +2,20 @@ import "./Deck.css"
 import Card from "../../Components/Card/Card";
 import { useEffect, useState } from "react";
 
-const Deck = ({deck}) => {
-    const [text, setText] = useState("Loading...");
-    const [currentCard, setCurrentCard] = useState(0);
+const Deck = ({deck, text, setText, currentCard}) => {
     const [shuffledDeck, setShuffledDeck] = useState([]);
-    var unshuffledDeck = deck;
     useEffect(() => {
-        while (unshuffledDeck.length !== 0){
-            let randomCard = Math.floor(Math.random() * unshuffledDeck.length);
-            let shuffledCard = unshuffledDeck[randomCard];
+        while (deck.length !== 0){
+            let randomCard = Math.floor(Math.random() * deck.length);
+            let shuffledCard = deck[randomCard];
             setShuffledDeck(s => [...s, shuffledCard]);
-            unshuffledDeck.splice(randomCard, 1);
+            deck.splice(randomCard, 1);
         }
-    }, [unshuffledDeck]);
-    
+    }, [deck]);
 
     useEffect(() => {
-        setTimeout(() => {
-            setCurrentCard(currentCard + 1);
-            setText(shuffledDeck[currentCard]);
-        }, 3000)
-      },[currentCard, unshuffledDeck, shuffledDeck]);
+        setText(shuffledDeck[currentCard]);
+      },[currentCard, shuffledDeck, setText]);
     
       return <Card card={text} />;
 };
